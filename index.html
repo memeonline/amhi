@@ -3,80 +3,503 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AMHI | Sitio en construcción</title>
+    <meta name="description" content="AMHI - Servicios médicos integrales con altos estándares de calidad, eficiencia operativa y cumplimiento normativo." />
+    <meta name="keywords" content="servicios médicos, salud, atención médica, AMHI, servicios de salud integrales" />
+    <title>AMHI | Servicios Médicos Integrales</title>
     <style>
       :root {
         color-scheme: light dark;
         font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+        --primary-bg: #f5f5f5;
+        --primary-text: #1a1a1a;
+        --card-bg: rgba(255, 255, 255, 0.92);
+        --secondary-text: #4a4a4a;
+        --section-bg: rgba(255, 255, 255, 0.95);
+        --border-color: rgba(0, 0, 0, 0.1);
+        --accent-color: #47878e;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --primary-bg: #0f172a;
+          --primary-text: #e2e8f0;
+          --card-bg: rgba(15, 23, 42, 0.9);
+          --secondary-text: #94a3b8;
+          --section-bg: rgba(15, 23, 42, 0.95);
+          --border-color: rgba(255, 255, 255, 0.1);
+        }
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
       }
 
       body {
         margin: 0;
         min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: #f5f5f5;
-        color: #1a1a1a;
+        background: #47878e;
+        color: var(--primary-text);
+        line-height: 1.6;
       }
 
-      .card {
-        text-align: center;
-        padding: 2.5rem 3rem;
-        border-radius: 18px;
-        background: rgba(255, 255, 255, 0.92);
-        box-shadow: 0 16px 48px rgba(0, 0, 0, 0.08);
-        max-width: 420px;
-        width: calc(100% - 2rem);
+      header {
+        background: var(--section-bg);
+        text-align: left;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        backdrop-filter: blur(10px);
       }
 
       .logo {
-        width: 180px;
-        max-width: 60vw;
+        width: 300px;
+        max-width: 70vw;
         height: auto;
-        margin: 0 auto 2rem;
         display: block;
       }
 
+      main {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 3rem 1.5rem;
+      }
+
+      section {
+        margin-bottom: 4rem;
+        padding: 2.5rem;
+        background: var(--card-bg);
+        border-radius: 18px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      section:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+      }
+
       h1 {
-        font-size: 1.75rem;
-        margin: 0 0 0.75rem;
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        text-align: center;
         letter-spacing: 0.01em;
       }
 
-      p {
-        margin: 0;
-        font-size: 1rem;
-        color: #4a4a4a;
+      h2 {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+        color: var(--primary-text);
+        border-bottom: 3px solid var(--border-color);
+        padding-bottom: 0.75rem;
+        position: relative;
       }
 
-      @media (prefers-color-scheme: dark) {
-        body {
-          background: #0f172a;
-          color: #e2e8f0;
+      h2::after {
+        content: '';
+        position: absolute;
+        bottom: -3px;
+        left: 0;
+        width: 60px;
+        height: 3px;
+        background: var(--accent-color);
+      }
+
+      h3 {
+        font-size: 1.5rem;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        color: var(--primary-text);
+      }
+
+      p {
+        font-size: 1.125rem;
+        color: var(--secondary-text);
+        margin-bottom: 1rem;
+        line-height: 1.8;
+      }
+
+      .intro {
+        text-align: center;
+        padding: 3rem 2rem;
+      }
+
+      .intro p {
+        font-size: 1.25rem;
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      .values-list {
+        list-style: none;
+        padding: 0;
+      }
+
+      .values-list li {
+        margin-bottom: 2rem;
+        padding: 1.5rem;
+        background: var(--section-bg);
+        border-radius: 12px;
+        border-left: 4px solid var(--accent-color);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .values-list li:hover {
+        transform: translateX(4px);
+        box-shadow: 0 4px 12px rgba(71, 135, 142, 0.2);
+        border-left-color: var(--accent-color);
+      }
+
+      main a {
+        color: var(--accent-color);
+        text-decoration: none;
+        border-bottom: 1px solid rgba(71, 135, 142, 0.3);
+        transition: border-color 0.3s, color 0.3s;
+      }
+
+      main a:hover,
+      main a:focus {
+        border-bottom-color: var(--accent-color);
+        color: var(--accent-color);
+        outline: none;
+      }
+
+      .values-list li strong {
+        display: block;
+        font-size: 1.25rem;
+        margin-bottom: 0.5rem;
+        color: var(--primary-text);
+      }
+
+      .values-list li p {
+        margin: 0;
+        font-size: 1rem;
+      }
+
+      footer {
+        background: #000000;
+        padding: 4rem 2rem 3rem;
+        margin-top: 4rem;
+        color: #ffffff;
+      }
+
+      .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 4rem;
+        justify-content: space-between;
+      }
+
+      .footer-logo-container {
+        flex: 0 0 auto;
+        display: flex;
+        align-items: flex-start;
+      }
+
+      .footer-logo {
+        width: 280px;
+        height: auto;
+        display: block;
+      }
+
+      .footer-info {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+      }
+
+      .footer-section {
+        width: 100%;
+      }
+
+      .footer-section h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1.25rem;
+        border: none;
+        padding: 0;
+        color: #ffffff;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        position: relative;
+        padding-bottom: 0.75rem;
+      }
+
+      .footer-section h3::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 50px;
+        height: 2px;
+        background: var(--accent-color);
+      }
+
+      .footer-section p {
+        margin: 0.75rem 0;
+        font-size: 1.05rem;
+        color: #e5e5e5;
+        line-height: 1.8;
+        letter-spacing: 0.01em;
+      }
+
+      .footer-section .contact-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+      }
+
+      .footer-section .contact-item::before {
+        content: '•';
+        color: var(--accent-color);
+        font-size: 1.2rem;
+        line-height: 1.5;
+        flex-shrink: 0;
+        margin-top: 0.1rem;
+      }
+
+      .footer-section .contact-item p {
+        margin: 0;
+      }
+
+      .footer-section a {
+        color: #ffffff;
+        text-decoration: none;
+        border-bottom: 1px solid rgba(71, 135, 142, 0.4);
+        transition: border-color 0.3s, color 0.3s;
+        display: inline-block;
+      }
+
+      .footer-section a:hover,
+      .footer-section a:focus {
+        border-bottom-color: var(--accent-color);
+        color: var(--accent-color);
+        outline: none;
+      }
+
+      @media (max-width: 768px) {
+        header {
+          padding: 0.75rem 1.5rem;
         }
 
-        .card {
-          background: rgba(15, 23, 42, 0.9);
-          box-shadow: 0 16px 48px rgba(15, 23, 42, 0.45);
+        .logo {
+          width: 250px;
+        }
+
+        h1 {
+          font-size: 2rem;
+        }
+
+        h2 {
+          font-size: 1.75rem;
+        }
+
+        section {
+          padding: 1.5rem;
+        }
+
+        main {
+          padding: 2rem 1rem;
+        }
+
+        .intro {
+          padding: 2rem 1rem;
+        }
+
+        .intro p {
+          font-size: 1.125rem;
+        }
+
+        .footer-content {
+          flex-direction: column;
+          gap: 2.5rem;
+          align-items: center;
+          text-align: center;
+        }
+
+        .footer-logo-container {
+          justify-content: center;
+        }
+
+        .footer-logo {
+          width: 220px;
+        }
+
+        .footer-section h3::after {
+          left: 50%;
+          transform: translateX(-50%);
+        }
+
+        .footer-section .contact-item {
+          justify-content: center;
+        }
+
+        footer {
+          padding: 3rem 1.5rem 2rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        header {
+          padding: 0.75rem 1rem;
+        }
+
+        .logo {
+          width: 200px;
+        }
+
+        h1 {
+          font-size: 1.75rem;
+        }
+
+        h2 {
+          font-size: 1.5rem;
+        }
+
+        section {
+          padding: 1.25rem;
         }
 
         p {
-          color: #94a3b8;
+          font-size: 1rem;
+        }
+
+        footer {
+          padding: 2.5rem 1rem 2rem;
+        }
+
+        .footer-logo {
+          width: 180px;
+        }
+
+        .footer-section h3 {
+          font-size: 1.25rem;
+        }
+
+        .footer-section p {
+          font-size: 0.95rem;
+        }
+      }
+
+      /* Accessibility improvements */
+      a:focus,
+      button:focus {
+        outline: 2px solid var(--primary-text);
+        outline-offset: 2px;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
         }
       }
     </style>
   </head>
   <body>
-    <main class="card">
+    <header>
       <img
         class="logo"
         src="logos/Logo_AMHI_Variantes-01.png"
         alt="Logo de AMHI"
       />
-      <h1>Sitio en construcción</h1>
-      <p>Pronto tendrás toda la información de AMHI disponible aquí.</p>
+    </header>
+
+    <main>
+      <section class="intro" id="inicio">
+        <h1>Bienvenido a AMHI</h1>
+        <p>
+          Somos una empresa especializada en la administración médica integral, conformada por profesionales del sector que suman más de 20 años de experiencia ofreciendo servicios de salud.
+          <br><br>
+          Nuestra red médica está compuesta por hospitales, gabinetes, laboratorios y farmacias con presencia en más del 80% de los estados de la República Mexicana.        </p>
+      </section>
+
+      <section id="mision">
+        <h2>Misión</h2>
+        <p>
+          Proveer servicios médicos integrales, garantizando altos estándares de calidad, eficiencia operativa y cumplimiento normativo. Nos enfocamos en ofrecer soluciones de salud sustentables que optimicen los recursos, fortalezcan la atención médica y contribuyan al bienestar de los beneficiarios y sus familias.
+        </p>
+      </section>
+
+      <section id="vision">
+        <h2>Visión</h2>
+        <p>
+          Consolidarnos como la empresa médica de referencia en la gestión integral de servicios de salud, destacando por nuestra solidez, innovación y compromiso en la atención, la calidad y mejora continua.
+        </p>
+      </section>
+
+      <section id="valores">
+        <h2>Valores</h2>
+        <ul class="values-list">
+          <li>
+            <strong>Compromiso.</strong>
+            <p>Actuamos con responsabilidad y entrega en cada servicio, cumpliendo las expectativas de nuestros clientes.</p>
+          </li>
+          <li>
+            <strong>Calidad.</strong>
+            <p>Promovemos la excelencia en todos nuestros procesos y servicios médicos, garantizando atención segura, eficiente y basada en las mejores prácticas del sector salud.</p>
+          </li>
+          <li>
+            <strong>Transparencia.</strong>
+            <p>Operamos con integridad y claridad en la gestión de recursos, fortaleciendo la confianza de las instituciones y la sociedad en nuestro actuar.</p>
+          </li>
+          <li>
+            <strong>Eficiencia.</strong>
+            <p>Optimizamos los recursos humanos, tecnológicos y financieros para ofrecer soluciones sostenibles que generen valor a largo plazo.</p>
+          </li>
+          <li>
+            <strong>Innovación.</strong>
+            <p>Incorporamos tecnología, conocimiento y mejora continua para modernizar los servicios médicos y administrativos que brindamos.</p>
+          </li>
+          <li>
+            <strong>Ética profesional.</strong>
+            <p>Mantenemos una conducta íntegra y respetuosa, basada en los principios éticos que aseguran la equidad, la confidencialidad y el respeto a la dignidad humana.</p>
+          </li>
+          <li>
+            <strong>Trabajo en equipo.</strong>
+            <p>Fomentamos la colaboración y la comunicación efectiva entre profesionales de la salud, administrativos y clientes para alcanzar un resultado de alto impacto.</p>
+          </li>
+        </ul>
+      </section>
     </main>
+
+    <footer id="contacto">
+      <div class="footer-content">
+        <div class="footer-logo-container">
+          <img
+            class="footer-logo"
+            src="logos/Logo_AMHI_footer.png"
+            alt="Logo de AMHI"
+          />
+        </div>
+        <div class="footer-info">
+          <div class="footer-section">
+            <h3>Contacto</h3>
+            <div class="contact-item">
+              <p>
+                Av. Ingenieros Militares 76, San Lorenzo Tlaltenango, Miguel Hidalgo, 11210 Ciudad de México, CDMX, Mexico
+              </p>
+            </div>
+            <div class="contact-item">
+              <p>
+                <a href="mailto:contacto@amhi.mx">contacto@amhi.mx</a>
+              </p>
+            </div>
+            <div class="contact-item">
+              <p>
+                <a href="docs/AVISO%20DE%20PRIVACIDAD.pdf" target="_blank" rel="noopener noreferrer">Aviso de Privacidad</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
-
