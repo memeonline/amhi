@@ -17,6 +17,7 @@
                         amhi: {
                             teal: '#47878e',
                             dark: '#36403e',
+                            black: '#1a1f1e',
                             light: '#f4f4f4',
                         }
                     },
@@ -59,24 +60,41 @@
     <nav class="fixed w-full z-50 top-0 transition-all duration-300 backdrop-blur-md bg-amhi-dark/80 border-b border-white/10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
-                <div class="flex-shrink-0 cursor-pointer">
+                <a href="index.html" class="flex-shrink-0 cursor-pointer" title="Ir al inicio">
                     <div class="flex items-center gap-2">
                         <img src="logos/Logo_AMHI_footer.png" width="200" height="128" alt="Logo AMHI"/>
                     </div>
-                </div>
+                </a>
                 
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-8">
-                        <a href="#inicio" class="hover:text-amhi-teal px-3 py-2 rounded-md text-sm font-medium transition-colors">Conócenos</a>
-                        <a href="#servicios" class="hover:text-amhi-teal px-3 py-2 rounded-md text-sm font-medium transition-colors">Servicios</a>
-                        <a href="#" class="hover:text-amhi-teal px-3 py-2 rounded-md text-sm font-medium transition-colors">Clientes</a>
-                        <a href="#" class="hover:text-amhi-teal px-3 py-2 rounded-md text-sm font-medium transition-colors">Aliados</a>
+                        <a href="nosotros.html" class="hover:text-amhi-teal px-3 py-2 rounded-md text-sm font-medium transition-colors">Conócenos</a>
+                        <a href="Servicios.html" class="hover:text-amhi-teal px-3 py-2 rounded-md text-sm font-medium transition-colors">Servicios</a>
+                        <a href="Nuestros Clientes.html" class="hover:text-amhi-teal px-3 py-2 rounded-md text-sm font-medium transition-colors">Clientes</a>
+                        <a href="Aliados por tu salud.html" class="hover:text-amhi-teal px-3 py-2 rounded-md text-sm font-medium transition-colors">Aliados</a>
                         <a href="#" class="hover:text-amhi-teal px-3 py-2 rounded-md text-sm font-medium transition-colors">Información y Salud</a>
-                        <a href="#contacto" class="bg-amhi-teal hover:bg-opacity-80 px-5 py-2 rounded-full text-sm font-bold shadow-neon transition-all transform hover:scale-105">Contáctanos</a>
+                        <a href="contacto.html" class="bg-amhi-teal hover:bg-opacity-80 px-5 py-2 rounded-full text-sm font-bold shadow-neon transition-all transform hover:scale-105">Contáctanos</a>
                     </div>
+                </div>
+
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="bg-transparent inline-flex items-center justify-center p-2 rounded-md text-gray-200 hover:text-white hover:bg-white/10 focus:outline-none">
+                        <span class="sr-only">Abrir menú</span>
+                        <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                    </button>
                 </div>
             </div>
         </div>
+    <div class="hidden md:hidden bg-amhi-dark/95 backdrop-blur-xl border-t border-white/10" id="mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a href="nosotros.html" class="text-gray-300 hover:text-amhi-teal block px-3 py-2 rounded-md text-base font-medium transition-colors">Conócenos</a>
+            <a href="Servicios.html" class="text-gray-300 hover:text-amhi-teal block px-3 py-2 rounded-md text-base font-medium transition-colors">Servicios</a>
+            <a href="Nuestros Clientes.html" class="text-gray-300 hover:text-amhi-teal block px-3 py-2 rounded-md text-base font-medium transition-colors">Clientes</a>
+            <a href="Aliados por tu salud.html" class="text-gray-300 hover:text-amhi-teal block px-3 py-2 rounded-md text-base font-medium transition-colors">Aliados</a>
+            <a href="#" class="text-gray-300 hover:text-amhi-teal block px-3 py-2 rounded-md text-base font-medium transition-colors">Información y Salud</a>
+            <a href="contacto.html" class="text-amhi-teal font-bold block px-3 py-2 rounded-md text-base transition-colors">Contáctanos</a>
+        </div>
+    </div>
     </nav>
 
     <section id="inicio" class="relative min-h-screen flex items-center overflow-hidden bg-tech-grid pt-20">
@@ -335,13 +353,13 @@
         </div>
     </section>
 
-    <footer id="contacto" class="bg-[#1a1f1e] border-t border-white/10 pt-16 pb-8 text-white relative overflow-hidden">
+    <footer class="bg-amhi-black border-t border-white/10 pt-16 pb-8 text-white relative overflow-hidden">
         <div class="absolute bottom-0 right-0 w-96 h-96 bg-amhi-teal rounded-full mix-blend-overlay filter blur-3xl opacity-5 pointer-events-none"></div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-24 items-start">
                 <div class="space-y-6">
-                    <img src="logos/Logo_AMHI_Variantes-01.png" width="300" height="192" alt="Logo AMHI"/>
+                    <a href="index.html"><img src="logos/Logo_AMHI_Variantes-01.png" width="300" height="192" alt="Logo AMHI"/></a>
                     <p class="font-body text-gray-400 text-sm leading-relaxed max-w-sm">
                         Innovación tecnológica y excelencia humana al servicio de la salud integral.
                     </p>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contacta a AMHI - Alianza Médica Hospitalaria Integral. Estamos para atenderte." />
+    <title>Contáctanos - AMHI</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        amhi: {
+                            teal: '#47878e',
+                            dark: '#36403e',
+                            black: '#1a1f1e',
+                            light: '#f4f4f4',
+                        }
+                    },
+                    fontFamily: {
+                        'title': ['Montserrat', 'sans-serif'],
+                        'body': ['Exo 2', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'neon': '0 0 20px rgba(71, 135, 142, 0.6)',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;600&family=Montserrat:wght@900&display=swap" rel="stylesheet">
+</head>
+<body class="bg-amhi-dark text-white font-body selection:bg-amhi-teal selection:text-white">
+
+    <nav class="fixed w-full z-50 top-0 transition-all duration-300 backdrop-blur-md bg-amhi-dark/80 border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="index.html" class="flex-shrink-0 cursor-pointer" title="Ir al inicio">
+                    <div class="flex items-center gap-2">
+                        <img src="logos/Logo_AMHI_footer.png" width="200" height="128" alt="Logo AMHI"/>
+                    </div>
+                </a>
+                
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="nosotros.html" class="hover:text-amhi-teal px-3 py-2 rounded-md text-sm font-medium transition-colors">Conócenos</a>
+                        <a href="Servicios.html" class="hover:text-amhi-teal px-3 py-2 rounded-md text-sm font-medium transition-colors">Servicios</a>
+                        <a href="Nuestros Clientes.html" class="hover:text-amhi-teal px-3 py-2 rounded-md text-sm font-medium transition-colors">Clientes</a>
+                        <a href="Aliados por tu salud.html" class="hover:text-amhi-teal px-3 py-2 rounded-md text-sm font-medium transition-colors">Aliados</a>
+                        <a href="#" class="hover:text-amhi-teal px-3 py-2 rounded-md text-sm font-medium transition-colors">Información y Salud</a>
+                        <a href="contacto.html" class="bg-amhi-teal hover:bg-opacity-80 px-5 py-2 rounded-full text-sm font-bold shadow-neon transition-all transform hover:scale-105">Contáctanos</a>
+                    </div>
+                </div>
+
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="bg-transparent inline-flex items-center justify-center p-2 rounded-md text-gray-200 hover:text-white hover:bg-white/10 focus:outline-none">
+                        <span class="sr-only">Abrir menú</span>
+                        <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="hidden md:hidden bg-amhi-dark/95 backdrop-blur-xl border-t border-white/10" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="nosotros.html" class="text-gray-300 hover:text-amhi-teal block px-3 py-2 rounded-md text-base font-medium transition-colors">Conócenos</a>
+                <a href="Servicios.html" class="text-gray-300 hover:text-amhi-teal block px-3 py-2 rounded-md text-base font-medium transition-colors">Servicios</a>
+                <a href="Nuestros Clientes.html" class="text-gray-300 hover:text-amhi-teal block px-3 py-2 rounded-md text-base font-medium transition-colors">Clientes</a>
+                <a href="Aliados por tu salud.html" class="text-gray-300 hover:text-amhi-teal block px-3 py-2 rounded-md text-base font-medium transition-colors">Aliados</a>
+                <a href="#" class="text-gray-300 hover:text-amhi-teal block px-3 py-2 rounded-md text-base font-medium transition-colors">Información y Salud</a>
+                <a href="contacto.html" class="text-amhi-teal font-bold block px-3 py-2 rounded-md text-base transition-colors">Contáctanos</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="pt-20 min-h-screen">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+            <div class="text-center mb-12">
+                <h1 class="font-title text-4xl md:text-5xl font-black text-white mb-4">Contáctanos</h1>
+                <p class="font-body text-gray-400 text-lg max-w-2xl mx-auto">Completa el formulario y nuestro equipo te responderá a la brevedad.</p>
+            </div>
+            <div class="max-w-2xl mx-auto bg-amhi-dark/50 backdrop-blur-sm border border-white/10 rounded-3xl p-8 md:p-10 shadow-2xl">
+                <form action="#" method="POST" class="space-y-6">
+                    <div>
+                        <label for="nombre" class="block text-sm font-medium text-gray-300 mb-2 font-body">Nombre completo <span class="text-red-400">*</span></label>
+                        <input type="text" id="nombre" name="nombre" required placeholder="Ej. Juan Pérez" class="w-full bg-amhi-black/50 border border-white/10 rounded-xl px-5 py-4 text-white placeholder-gray-500 focus:outline-none focus:border-amhi-teal focus:ring-1 focus:ring-amhi-teal transition-all duration-300 font-body">
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-300 mb-2 font-body">Correo electrónico <span class="text-red-400">*</span></label>
+                            <input type="email" id="email" name="email" required placeholder="tucorreo@empresa.com" class="w-full bg-amhi-black/50 border border-white/10 rounded-xl px-5 py-4 text-white placeholder-gray-500 focus:outline-none focus:border-amhi-teal focus:ring-1 focus:ring-amhi-teal transition-all duration-300 font-body">
+                        </div>
+                        <div>
+                            <label for="telefono" class="block text-sm font-medium text-gray-300 mb-2 font-body">Número de teléfono</label>
+                            <input type="tel" id="telefono" name="telefono" placeholder="+52 (55) 1234 5678" class="w-full bg-amhi-black/50 border border-white/10 rounded-xl px-5 py-4 text-white placeholder-gray-500 focus:outline-none focus:border-amhi-teal focus:ring-1 focus:ring-amhi-teal transition-all duration-300 font-body">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="motivo" class="block text-sm font-medium text-gray-300 mb-2 font-body">Motivo de Contacto <span class="text-red-400">*</span></label>
+                        <select id="motivo" name="motivo" required class="w-full bg-amhi-black/50 border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-none focus:border-amhi-teal focus:ring-1 focus:ring-amhi-teal transition-all duration-300 font-body appearance-none cursor-pointer">
+                            <option value="" disabled selected class="text-gray-500 bg-amhi-dark">Selecciona una opción</option>
+                            <option value="servicios" class="bg-amhi-dark">Información de Servicios</option>
+                            <option value="proveedor" class="bg-amhi-dark">Proveedor</option>
+                            <option value="cliente" class="bg-amhi-dark">Cliente</option>
+                            <option value="Derechohabiente" class="bg-amhi-dark">Derechohabiente</option>
+                            <option value="Profesional de la Salud" class="bg-amhi-dark">Profesional de la Salud</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="direccion" class="block text-sm font-medium text-gray-300 mb-2 font-body">Dirección</label>
+                        <textarea id="direccion" name="direccion" rows="2" placeholder="Calle, Número, Colonia, Ciudad..." class="w-full bg-amhi-black/50 border border-white/10 rounded-xl px-5 py-4 text-white placeholder-gray-500 focus:outline-none focus:border-amhi-teal focus:ring-1 focus:ring-amhi-teal transition-all duration-300 font-body resize-none"></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-amhi-teal text-white font-bold py-4 rounded-xl shadow-neon hover:bg-opacity-90 transition-all duration-300 transform hover:-translate-y-0.5 flex items-center justify-center gap-2 group">
+                        <span>ENVIAR MENSAJE</span>
+                        <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-amhi-black border-t border-white/10 pt-16 pb-8 text-white relative overflow-hidden">
+        <div class="absolute bottom-0 right-0 w-96 h-96 bg-amhi-teal rounded-full mix-blend-overlay filter blur-3xl opacity-5 pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-24 items-start">
+                <div class="space-y-6">
+                    <a href="index.html"><img src="logos/Logo_AMHI_Variantes-01.png" width="300" height="192" alt="Logo AMHI"/></a>
+                    <p class="font-body text-gray-400 text-sm leading-relaxed max-w-sm">
+                        Innovación tecnológica y excelencia humana al servicio de la salud integral.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="font-title text-2xl font-bold text-white mb-2">Contacto</h3>
+                    <div class="w-12 h-1 bg-amhi-teal mb-8 rounded-full"></div>
+                    <ul class="space-y-6 font-body text-gray-300">
+                        <li class="flex items-start gap-4 group">
+                            <div class="mt-1 w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center text-amhi-teal group-hover:bg-amhi-teal group-hover:text-white transition-colors flex-shrink-0">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                            </div>
+                            <span class="text-sm leading-relaxed hover:text-white transition-colors">
+                                Av. Ingenieros Militares 76, San Lorenzo Tlaltenango, Miguel Hidalgo, 11210 Ciudad de México, CDMX, Mexico
+                            </span>
+                        </li>
+                        <li class="flex items-center gap-4 group">
+                            <div class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center text-amhi-teal group-hover:bg-amhi-teal group-hover:text-white transition-colors flex-shrink-0">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                            </div>
+                            <a href="mailto:contacto@amhi.mx" class="text-sm hover:text-white hover:underline decoration-amhi-teal underline-offset-4 transition-all">
+                                contacto@amhi.mx
+                            </a>
+                        </li>
+                        <li class="pt-4 border-t border-white/10">
+                            <a href="docs/AVISO%20DE%20PRIVACIDAD.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-amhi-teal hover:text-white transition-colors group">
+                                <span class="font-bold border-b border-transparent group-hover:border-amhi-teal">Aviso de Privacidad</span>
+                                <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-16 pt-8 border-t border-white/5 text-center">
+                <p class="text-gray-500 text-xs font-body">
+                    © 2026 AMHI - Alianza Médica Hospitalaria Integral. Todos los derechos reservados.
+                </p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
