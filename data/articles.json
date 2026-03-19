@@ -1,0 +1,24 @@
+[
+  {
+    "id": 1773877695479,
+    "slug": "prueba-dos",
+    "title": "Prueba DOS",
+    "excerpt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dapibus suscipit risus luctus porta. Nullam ut magna pretium, consequat elit dignissim, ultricies lacus.",
+    "updatedAt": "2026-03-18",
+    "imageSrc": "images/articles/1773877652771-962136db4b97e.png",
+    "imageAlt": "Pablo_Campuzano",
+    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dapibus suscipit risus luctus porta. Nullam ut magna pretium, consequat elit dignissim, ultricies lacus. Suspendisse potenti. Quisque vulputate venenatis massa, ut lacinia elit dapibus rutrum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin dictum, risus quis egestas feugiat, arcu est scelerisque est, eget volutpat eros velit eget augue. Maecenas a turpis nisl. Nullam id finibus neque. Sed quis tristique augue, a pharetra nisi. Donec interdum rhoncus sem sed porta.\n\nSed semper dui in dui facilisis tempor non quis turpis. Aenean efficitur accumsan faucibus. Vestibulum elementum hendrerit lorem, id fermentum ex malesuada ut. Cras semper nisi a eros imperdiet, sit amet ultrices est ullamcorper. Vivamus pretium nunc est, eget pulvinar justo convallis id. Curabitur placerat faucibus dictum. Morbi ac diam sit amet ligula tristique iaculis. Cras lacinia est ut elementum commodo. Quisque risus arcu, sollicitudin non convallis et, tempor vel ante. Praesent congue nibh eu turpis consequat, non congue sapien hendrerit. Curabitur in purus vitae ipsum dictum eleifend varius nec tortor. Sed faucibus luctus arcu, sit amet facilisis orci hendrerit ac. Donec nulla nisi, finibus eget porta vel, tempus imperdiet enim. Morbi facilisis ex id purus sagittis, at dictum erat tincidunt.\n\nNam finibus lorem pharetra auctor ullamcorper. Suspendisse facilisis eros sed diam egestas, et laoreet turpis faucibus. Aenean vel lacinia ante, non sodales mi. Quisque pulvinar aliquet cursus. Vestibulum ut mi sit amet ex lacinia luctus. In feugiat mi massa, ac pulvinar justo commodo in. Maecenas luctus ultrices elit, eget consectetur enim ultrices vitae. Praesent vehicula luctus urna nec efficitur. Sed quis urna quis eros tincidunt tincidunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed rutrum quam at consectetur venenatis. Mauris purus erat, sodales sed eros ut, imperdiet consectetur eros. Aenean aliquet mattis accumsan.",
+    "published": true
+  },
+  {
+    "id": 1773876763604,
+    "slug": "prueba-uno",
+    "title": "Prueba UNO",
+    "excerpt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dapibus suscipit risus luctus porta. Nullam ut magna pretium, consequat elit dignissim, ultricies lacus.",
+    "imageSrc": "ff",
+    "imageAlt": "",
+    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dapibus suscipit risus luctus porta. Nullam ut magna pretium, consequat elit dignissim, ultricies lacus. Suspendisse potenti. Quisque vulputate venenatis massa, ut lacinia elit dapibus rutrum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin dictum, risus quis egestas feugiat, arcu est scelerisque est, eget volutpat eros velit eget augue. Maecenas a turpis nisl. Nullam id finibus neque. Sed quis tristique augue, a pharetra nisi. Donec interdum rhoncus sem sed porta.",
+    "published": false,
+    "updatedAt": "2026-03-18"
+  }
+]

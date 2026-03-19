@@ -368,68 +368,18 @@
     <div class="flex flex-col lg:flex-row gap-10 relative">
         
         <div class="w-full lg:w-3/4 flex flex-col gap-6">
-            
-            <article class="bg-white dark:bg-white/80 rounded-2xl shadow-lg hover:shadow-neon transition-all duration-300 p-6 flex flex-col sm:flex-row items-center sm:items-start gap-6 border border-gray-100 dark:border-white/5 group">
-                <div class="w-32 h-32 flex-shrink-0 bg-gray-50 dark:bg-white/5 rounded-xl flex items-center justify-center p-4">
-                    <img src="images/Logo_Bano-Bienestar-Vertical.png" alt="Banco Bienestar" class="max-w-full max-h-full object-contain group-hover:scale-110 transition-transform duration-300">
-                </div>
-                <div class="flex-1 text-center sm:text-left flex flex-col justify-center">
-                    <span class="text-xs font-bold text-amhi-teal uppercase tracking-wider mb-2 block">Temática del artículo</span>
-                    <h3 class="text-2xl font-title font-bold text-amhi-dark dark:text-amhi-dark mb-3 group-hover:text-amhi-teal transition-colors">
-                        <a href="#">Título del Artículo 1</a>
-                    </h3>
-                    <p class="text-gray-600 dark:text-black font-body text-sm mb-4 line-clamp-2">
-                        Texto descriptivo del artículo 1. Aquí puedes colocar un resumen de lo que trata la noticia para invitar a la lectura.
-                    </p>
-                    <a href="#" class="inline-flex items-center text-amhi-teal font-bold text-sm hover:underline underline-offset-4 mt-auto">
-                        Leer artículo completo <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-                    </a>
-                </div>
-            </article>
-
-            <article class="bg-white dark:bg-white/80 rounded-2xl shadow-lg hover:shadow-neon transition-all duration-300 p-6 flex flex-col sm:flex-row items-center sm:items-start gap-6 border border-gray-100 dark:border-white/5 group">
-                <div class="w-32 h-32 flex-shrink-0 bg-gray-50 dark:bg-white/5 rounded-xl flex items-center justify-center p-4">
-                    <img src="images/LogoINDP.png" alt="INDEP" class="max-w-full max-h-full object-contain group-hover:scale-110 transition-transform duration-300">
-                </div>
-                <div class="flex-1 text-center sm:text-left flex flex-col justify-center">
-                    <span class="text-xs font-bold text-amhi-teal uppercase tracking-wider mb-2 block">Temática del artículo</span>
-                    <h3 class="text-2xl font-title font-bold text-amhi-dark dark:text-amhi-dark mb-3 group-hover:text-amhi-teal transition-colors">
-                        <a href="#">Título del Artículo 2</a>
-                    </h3>
-                    <p class="text-gray-600 dark:text-black font-body text-sm mb-4 line-clamp-2">
-                        Texto descriptivo del artículo 2.
-                    </p>
-                    <a href="#" class="inline-flex items-center text-amhi-teal font-bold text-sm hover:underline underline-offset-4 mt-auto">
-                        Leer artículo completo <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-                    </a>
-                </div>
-            </article>
-
-            <article class="bg-white dark:bg-white/80 rounded-2xl shadow-lg hover:shadow-neon transition-all duration-300 p-6 flex flex-col sm:flex-row items-center sm:items-start gap-6 border border-gray-100 dark:border-white/5 group">
-                <div class="w-32 h-32 flex-shrink-0 bg-gray-50 dark:bg-white/5 rounded-xl flex items-center justify-center p-4">
-                    <img src="images/Logo-Banural.png" alt="Banrural" class="max-w-full max-h-full object-contain group-hover:scale-110 transition-transform duration-300">
-                </div>
-                <div class="flex-1 text-center sm:text-left flex flex-col justify-center">
-                    <span class="text-xs font-bold text-amhi-teal uppercase tracking-wider mb-2 block">Temática del artículo</span>
-                    <h3 class="text-2xl font-title font-bold text-amhi-dark dark:text-amhi-dark mb-3 group-hover:text-amhi-teal transition-colors">
-                        <a href="#">Título del Artículo 3</a>
-                    </h3>
-                    <p class="text-gray-600 dark:text-black font-body text-sm mb-4 line-clamp-2">
-                        Texto descriptivo del artículo 3.
-                    </p>
-                    <a href="#" class="inline-flex items-center text-amhi-teal font-bold text-sm hover:underline underline-offset-4 mt-auto">
-                        Leer artículo completo <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-                    </a>
-                </div>
-            </article>
-
+            <!-- ARTICLES_SLOT_START -->
+            <div id="articles-list" class="flex flex-col gap-6">
+                <p class="text-gray-600 dark:text-gray-400 font-body text-sm">Cargando artículos...</p>
+            </div>
+            <!-- ARTICLES_SLOT_END -->
             </div>
 
         <div class="hidden lg:block lg:w-1/4 relative">
             
             <div class="sticky top-32 flex flex-col items-center justify-start">
                 
-                <img src="images/doctora-sonriendo.png" alt="Doctora AMHI" class="w-full h-auto object-contain drop-shadow-2xl animate-float">
+                <img src="images/doctora-sonriendo.png" alt="Doctora AMHI" loading="lazy" decoding="async" class="w-full h-auto object-contain drop-shadow-2xl animate-float">
                 
                 <div class="mt-4 bg-amhi-teal/10 dark:bg-amhi-teal/40 backdrop-blur-md border border-gray-100 dark:border-white/10 rounded-2xl p-5 text-center shadow-lg w-full">
                     <svg class="w-8 h-8 text-amhi-teal mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -442,6 +392,185 @@
 
     </div>
 </section>
+
+<!-- Article modal (opens from the list) -->
+<div id="article-modal-overlay" class="fixed inset-0 z-50 hidden flex items-center justify-center bg-amhi-black/60 backdrop-blur-sm p-4" aria-hidden="true">
+    <div id="article-modal" role="dialog" aria-modal="true" aria-labelledby="article-modal-title" class="w-full max-w-3xl max-h-[90vh] rounded-2xl bg-white dark:bg-white/80 border border-gray-200 dark:border-white/5 overflow-y-auto shadow-2xl">
+        <div class="flex items-start justify-between gap-4 p-5 border-b border-gray-100 dark:border-white/10">
+            <div class="min-w-0">
+                <h2 id="article-modal-title" class="font-title text-2xl font-bold text-amhi-dark dark:text-amhi-dark leading-snug"></h2>
+                <p id="article-modal-date" class="mt-2 text-xs text-gray-600 dark:text-gray-600 font-body"></p>
+            </div>
+            <button id="article-modal-close" type="button" class="shrink-0 inline-flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 dark:bg-white/10 hover:bg-white dark:hover:bg-white/20 border border-gray-200 dark:border-white/10 transition-colors" aria-label="Cerrar">
+                <svg class="w-5 h-5 text-amhi-dark dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+
+        <div class="p-5 space-y-4">
+            <img id="article-modal-image" alt="" src="" loading="lazy" decoding="async" class="w-full h-auto max-h-[260px] md:max-h-[320px] object-contain rounded-xl bg-gray-50 dark:bg-white/5 border border-gray-100 dark:border-white/10">
+
+            <div id="article-modal-content" class="text-gray-600 dark:text-black font-body text-sm leading-relaxed space-y-3"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    (function () {
+        let allArticles = [];
+
+        function escapeHtml(value) {
+            return String(value)
+                .replaceAll('&', '&amp;')
+                .replaceAll('<', '&lt;')
+                .replaceAll('>', '&gt;')
+                .replaceAll('"', '&quot;')
+                .replaceAll("'", '&#039;');
+        }
+
+        function articleCard(article) {
+            const slug = escapeHtml(article.slug || '');
+            const url = 'articulos/' + slug + '.html';
+            const title = escapeHtml(article.title || '');
+            const excerpt = escapeHtml(article.excerpt || '');
+            const dateDisplayRaw = article.updatedAt || article.date || '';
+            const dateDisplay = escapeHtml(dateDisplayRaw ? String(dateDisplayRaw).slice(0, 10) : '');
+            const imageSrc = escapeHtml(article.imageSrc || '');
+            const imageAlt = escapeHtml(article.imageAlt || article.title || '');
+
+            return `
+                <article class="bg-white dark:bg-white/80 rounded-2xl shadow-lg hover:shadow-neon transition-all duration-300 p-6 flex flex-col sm:flex-row items-center sm:items-start gap-6 border border-gray-100 dark:border-white/5 group">
+                    <div class="w-32 h-32 flex-shrink-0 bg-gray-50 dark:bg-white/5 rounded-xl flex items-center justify-center p-4">
+                        <img src="${imageSrc}" alt="${imageAlt}" loading="lazy" decoding="async" class="max-w-full max-h-full object-contain group-hover:scale-110 transition-transform duration-300">
+                    </div>
+                    <div class="flex-1 text-center sm:text-left flex flex-col justify-center">
+                        <h3 class="text-2xl font-title font-bold text-amhi-dark dark:text-amhi-dark mb-3 group-hover:text-amhi-teal transition-colors">
+                            <a href="${url}" data-open-article="${slug}">${title}</a>
+                        </h3>
+                        ${dateDisplay ? '<p class="text-xs text-gray-600 dark:text-gray-300 font-body mb-2">' + dateDisplay + '</p>' : ''}
+                        <p class="text-gray-600 dark:text-black font-body text-sm mb-4 line-clamp-2">
+                            ${excerpt}
+                        </p>
+                        <a href="${url}" data-open-article="${slug}" class="inline-flex items-center text-amhi-teal font-bold text-sm hover:underline underline-offset-4 mt-auto">
+                            Leer artículo completo
+                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        </a>
+                    </div>
+                </article>
+            `;
+        }
+
+        function contentToHtml(content) {
+            const text = String(content || '');
+            const blocks = text
+                .split(/\n\s*\n/g)
+                .map((b) => b.trim())
+                .filter(Boolean);
+
+            if (!blocks.length) return '';
+            return blocks.map((b) => {
+                const safe = escapeHtml(b).replaceAll('\n', '<br/>');
+                return `<p>${safe}</p>`;
+            }).join('');
+        }
+
+        function openModal(slug) {
+            const overlay = document.getElementById('article-modal-overlay');
+            if (!overlay) return;
+
+            const article = allArticles.find((a) => String(a?.slug || '') === String(slug || ''));
+            if (!article) return;
+
+            const titleEl = document.getElementById('article-modal-title');
+            const dateEl = document.getElementById('article-modal-date');
+            const imgEl = document.getElementById('article-modal-image');
+            const contentEl = document.getElementById('article-modal-content');
+
+            titleEl.textContent = article.title || '';
+            if (dateEl) {
+                const dateValue = article.updatedAt || article.date || '';
+                dateEl.textContent = dateValue ? String(dateValue).slice(0, 10) : '';
+                dateEl.classList.toggle('hidden', !dateEl.textContent);
+            }
+            imgEl.src = article.imageSrc || '';
+            imgEl.alt = article.imageAlt || article.title || '';
+            contentEl.innerHTML = contentToHtml(article.content);
+
+            overlay.classList.remove('hidden');
+            overlay.setAttribute('aria-hidden', 'false');
+
+            // Prevent background scroll while modal is open.
+            if (!document.body.dataset.modalOverflow) {
+                document.body.dataset.modalOverflow = String(document.body.style.overflow || '');
+            }
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const overlay = document.getElementById('article-modal-overlay');
+            if (!overlay) return;
+
+            overlay.classList.add('hidden');
+            overlay.setAttribute('aria-hidden', 'true');
+
+            const prev = document.body.dataset.modalOverflow;
+            document.body.style.overflow = prev !== undefined ? prev : '';
+            delete document.body.dataset.modalOverflow;
+        }
+
+        async function render() {
+            const list = document.getElementById('articles-list');
+            if (!list) return; // Article pages won’t have this slot
+
+            const res = await fetch('/api/articles', { cache: 'no-store' });
+            if (!res.ok) throw new Error('Failed to load articles: ' + res.status);
+
+            const data = await res.json();
+            const articles = Array.isArray(data) ? data : (data.articles || []);
+            allArticles = articles;
+            const published = articles.filter((a) => a && a.published);
+
+            if (!published.length) {
+                list.innerHTML = '<p class="text-gray-600 dark:text-gray-400 font-body text-sm">No hay artículos publicados aún.</p>';
+                return;
+            }
+
+            list.innerHTML = published.map(articleCard).join('');
+        }
+
+        document.addEventListener('click', (e) => {
+            const target = e.target;
+            if (!(target instanceof Element)) return;
+
+            const openEl = target.closest('[data-open-article]');
+            if (openEl) {
+                e.preventDefault();
+                openModal(openEl.getAttribute('data-open-article'));
+                return;
+            }
+
+            const closeBtn = target.closest('#article-modal-close');
+            if (closeBtn) {
+                e.preventDefault();
+                closeModal();
+            }
+        });
+
+        document.addEventListener('click', (e) => {
+            const overlay = document.getElementById('article-modal-overlay');
+            if (!overlay) return;
+            if (!(e.target instanceof Element)) return;
+            if (e.target === overlay) closeModal();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        document.addEventListener('DOMContentLoaded', render);
+    })();
+</script>
 
   <footer class="bg-gray-50 dark:bg-amhi-black border-t order-gray-300 dark:order-gray-300 dark:border-white/10 pt-16 pb-8 text-amhi-dark dark:text-white relative overflow-hidden">
         

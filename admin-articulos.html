@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Artículos | AMHI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        amhi: {
+                            teal: '#206B73',
+                            dark: '#36403e',
+                            black: '#1a1f1e',
+                            light: '#f4f4f4',
+                        }
+                    },
+                    fontFamily: {
+                        'title': ['Montserrat', 'sans-serif'],
+                        'body': ['Exo 2', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <script>
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+    <style>
+        body, div, nav, footer, section, h1, h2, h3, p, a, button, span, svg {
+            transition-property: background-color, border-color, color, fill, stroke;
+            transition-duration: 300ms;
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+    <script>
+        // Tiny helper: slug -> filename.
+        function normalizeSlug(value) {
+            return String(value || '')
+                .trim()
+                .toLowerCase()
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, '')
+                .replace(/[^a-z0-9]+/g, '-')
+                .replace(/(^-|-$)/g, '');
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-amhi-black text-amhi-dark dark:text-amhi-light font-body antialiased min-h-screen">
+    <div class="max-w-6xl mx-auto px-4 py-10">
+        <header class="mb-6">
+            <h1 class="font-title text-3xl md:text-4xl font-black text-amhi-dark dark:text-white">Admin Artículos</h1>
+            <p class="mt-2 text-gray-600 dark:text-gray-300 text-sm">
+                Edita artículos y publica/despublica. Al guardar, el backend regenera las páginas en <code class="px-2 py-1 bg-gray-100 dark:bg-white/10 rounded">/articulos/</code>.
+            </p>
+        </header>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+            <section class="bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10 rounded-2xl p-6">
+                <div class="flex items-center justify-between gap-4 mb-4">
+                    <h2 class="font-title text-2xl font-bold text-amhi-dark dark:text-white">Artículos</h2>
+                    <button id="refreshBtn" class="bg-amhi-teal text-white font-bold py-2 px-4 rounded-full shadow-neon hover:bg-white hover:text-amhi-teal border border-amhi-teal transition-colors">
+                        Refrescar
+                    </button>
+                </div>
+
+                <div id="articlesList" class="space-y-4">
+                    <p class="text-gray-600 dark:text-gray-300 text-sm">Cargando...</p>
+                </div>
+            </section>
+
+            <section class="bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10 rounded-2xl p-6">
+                <h2 class="font-title text-2xl font-bold text-amhi-dark dark:text-white mb-4">Editor</h2>
+
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-2">Slug (URL)</label>
+                        <input id="f-slug" type="text" class="w-full bg-gray-50 dark:bg-amhi-black/50 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-amhi-dark dark:text-white" />
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-2">Título</label>
+                        <input id="f-title" type="text" class="w-full bg-gray-50 dark:bg-amhi-black/50 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-amhi-dark dark:text-white" />
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-2">Excerpt (tarjeta)</label>
+                        <textarea id="f-excerpt" rows="2" class="w-full bg-gray-50 dark:bg-amhi-black/50 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-amhi-dark dark:text-white"></textarea>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-2">Fecha (updatedAt)</label>
+                        <input id="f-updatedAt" type="date" class="w-full bg-gray-50 dark:bg-amhi-black/50 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-amhi-dark dark:text-white" />
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-2">Imagen (imageSrc)</label>
+                        <input id="f-imageSrc" type="text" class="w-full bg-gray-50 dark:bg-amhi-black/50 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-amhi-dark dark:text-white" placeholder="images/..." />
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-2">Subir imagen (opcional)</label>
+                        <input id="f-imageFile" type="file" accept="image/*" class="w-full bg-gray-50 dark:bg-amhi-black/50 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-amhi-dark dark:text-white" />
+                        <img id="imagePreview" alt="Vista previa" src="" class="hidden w-full h-40 object-contain rounded-xl mt-3 bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10" />
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-2">Alt de la imagen</label>
+                        <input id="f-imageAlt" type="text" class="w-full bg-gray-50 dark:bg-amhi-black/50 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-amhi-dark dark:text-white" />
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-2">Contenido completo (content)</label>
+                        <textarea id="f-content" rows="8" class="w-full bg-gray-50 dark:bg-amhi-black/50 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-amhi-dark dark:text-white" placeholder="Texto con saltos de línea. Separar párrafos con una línea en blanco."></textarea>
+                    </div>
+
+                    <div class="flex items-center justify-between gap-4">
+                        <label class="flex items-center gap-3 select-none">
+                            <input id="f-published" type="checkbox" class="h-5 w-5 accent-amhi-teal" />
+                            <span class="text-sm font-bold text-amhi-dark dark:text-white">Publicar</span>
+                        </label>
+
+                        <div class="text-right">
+                            <p id="formHint" class="text-xs text-gray-500 dark:text-gray-300"></p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row gap-3">
+                        <button id="saveBtn" class="bg-amhi-teal text-white font-bold py-3 px-6 rounded-full shadow-neon hover:bg-white hover:text-amhi-teal border border-amhi-teal transition-colors">
+                            Guardar / Actualizar
+                        </button>
+                        <button id="newBtn" class="bg-gray-100 dark:bg-white/10 text-gray-800 dark:text-white font-bold py-3 px-6 rounded-full hover:bg-white dark:hover:bg-white/20 border border-gray-200 dark:border-white/10 transition-colors">
+                            Nuevo
+                        </button>
+                    </div>
+
+                    <div id="statusBox" class="hidden mt-2 rounded-xl border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 p-3 text-sm"></div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        const state = {
+            articles: [],
+            selectedSlug: null
+        };
+
+        const els = {
+            articlesList: document.getElementById('articlesList'),
+            refreshBtn: document.getElementById('refreshBtn'),
+            saveBtn: document.getElementById('saveBtn'),
+            newBtn: document.getElementById('newBtn'),
+            statusBox: document.getElementById('statusBox'),
+
+            slug: document.getElementById('f-slug'),
+            title: document.getElementById('f-title'),
+            excerpt: document.getElementById('f-excerpt'),
+            updatedAt: document.getElementById('f-updatedAt'),
+            imageSrc: document.getElementById('f-imageSrc'),
+            imageFile: document.getElementById('f-imageFile'),
+            imagePreview: document.getElementById('imagePreview'),
+            imageAlt: document.getElementById('f-imageAlt'),
+            content: document.getElementById('f-content'),
+            published: document.getElementById('f-published'),
+            formHint: document.getElementById('formHint'),
+        };
+
+        function showStatus(message, isError) {
+            els.statusBox.classList.remove('hidden');
+            els.statusBox.classList.toggle('border-red-200', !!isError);
+            els.statusBox.classList.toggle('border-green-200', !isError);
+            els.statusBox.textContent = message;
+        }
+
+        function clearStatus() {
+            els.statusBox.classList.add('hidden');
+        }
+
+        function getFormArticle() {
+            return {
+                id: state.articles.find(a => a.slug === state.selectedSlug)?.id || Date.now(),
+                slug: normalizeSlug(els.slug.value),
+                title: els.title.value.trim(),
+                excerpt: els.excerpt.value.trim(),
+                updatedAt: els.updatedAt && els.updatedAt.value ? els.updatedAt.value : new Date().toISOString().slice(0, 10),
+                imageSrc: els.imageSrc.value.trim(),
+                imageAlt: els.imageAlt.value.trim(),
+                content: els.content.value.trim(),
+                published: !!els.published.checked
+            };
+        }
+
+        function setFormFromArticle(article) {
+            state.selectedSlug = article.slug || null;
+            els.slug.value = article.slug || '';
+            els.title.value = article.title || '';
+            els.excerpt.value = article.excerpt || '';
+            if (els.updatedAt) {
+                const v = article.updatedAt || '';
+                // Support both YYYY-MM-DD and full ISO strings.
+                els.updatedAt.value = String(v).slice(0, 10);
+            }
+            els.imageSrc.value = article.imageSrc || '';
+            if (els.imagePreview) {
+                els.imagePreview.src = els.imageSrc.value || '';
+                els.imagePreview.classList.toggle('hidden', !els.imagePreview.src);
+            }
+            els.imageAlt.value = article.imageAlt || '';
+            els.content.value = article.content || '';
+            els.published.checked = !!article.published;
+            els.formHint.textContent = article.published ? 'Actualmente publicado' : 'Actualmente no publicado';
+        }
+
+        function resetForm() {
+            state.selectedSlug = null;
+            els.slug.value = '';
+            els.title.value = '';
+            els.excerpt.value = '';
+            if (els.updatedAt) els.updatedAt.value = '';
+            els.imageSrc.value = '';
+            if (els.imagePreview) {
+                els.imagePreview.src = '';
+                els.imagePreview.classList.add('hidden');
+            }
+            if (els.imageFile) {
+                els.imageFile.value = '';
+            }
+            els.imageAlt.value = '';
+            els.content.value = '';
+            els.published.checked = false;
+            els.formHint.textContent = '';
+        }
+
+        function articleRow(article) {
+            const published = !!article.published;
+            return `
+                <div class="rounded-2xl border border-gray-100 dark:border-white/10 p-4">
+                    <div class="flex items-start justify-between gap-4">
+                        <div>
+                            <p class="text-xs font-bold text-amhi-teal uppercase tracking-wider">${escapeText(article.slug || '')}</p>
+                            <h3 class="font-title text-lg font-bold text-amhi-dark dark:text-white mt-1">${escapeText(article.title || '')}</h3>
+                            ${article.updatedAt ? '<p class="text-xs text-gray-500 dark:text-gray-400 mt-1">' + escapeText(String(article.updatedAt).slice(0, 10)) + '</p>' : ''}
+                            <p class="text-sm text-gray-600 dark:text-gray-300 mt-1 line-clamp-2">${escapeText(article.excerpt || '')}</p>
+                        </div>
+
+                        <div class="flex flex-col items-end gap-2">
+                            <label class="flex items-center gap-2 select-none">
+                                <input type="checkbox" class="w-5 h-5 accent-amhi-teal published-toggle" data-slug="${escapeAttr(article.slug || '')}" ${published ? 'checked' : ''} />
+                                <span class="text-sm font-bold ${published ? 'text-green-700 dark:text-green-200' : 'text-gray-500 dark:text-gray-300'}">${published ? 'Publicado' : 'No'}</span>
+                            </label>
+                            <button class="editBtn text-amhi-teal hover:underline text-sm font-bold" data-slug="${escapeAttr(article.slug || '')}">
+                                Editar
+                            </button>
+                            <button class="deleteBtn text-red-600 hover:underline text-sm font-bold" data-slug="${escapeAttr(article.slug || '')}">
+                                Eliminar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function escapeAttr(value) {
+            return String(value ?? '').replaceAll('"', '&quot;');
+        }
+        function escapeText(value) {
+            return String(value ?? '')
+                .replaceAll('&', '&amp;')
+                .replaceAll('<', '&lt;')
+                .replaceAll('>', '&gt;');
+        }
+
+        function renderList() {
+            const articles = state.articles;
+            if (!articles.length) {
+                els.articlesList.innerHTML = '<p class="text-gray-600 dark:text-gray-300 text-sm">No hay artículos.</p>';
+                return;
+            }
+            els.articlesList.innerHTML = articles.map(articleRow).join('');
+        }
+
+        async function fetchArticles() {
+            const res = await fetch('/api/articles', { cache: 'no-store' });
+            if (!res.ok) throw new Error('No se pudo cargar: ' + res.status);
+            const data = await res.json();
+            state.articles = Array.isArray(data) ? data : (data.articles || []);
+        }
+
+        function updateArticleInState(updated) {
+            const idx = state.articles.findIndex(a => a.slug === updated.slug);
+            if (idx >= 0) state.articles[idx] = updated;
+            else state.articles.unshift(updated);
+        }
+
+        async function saveArticles() {
+            const payload = { articles: state.articles };
+            const res = await fetch('/api/articles', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload),
+            });
+            if (!res.ok) {
+                const text = await res.text().catch(() => '');
+                throw new Error('No se pudo guardar: ' + res.status + (text ? ' - ' + text : ''));
+            }
+        }
+
+        async function load() {
+            clearStatus();
+            els.articlesList.innerHTML = '<p class="text-gray-600 dark:text-gray-300 text-sm">Cargando...</p>';
+            await fetchArticles();
+            renderList();
+        }
+
+        document.addEventListener('click', async (e) => {
+            const target = e.target;
+            if (!(target instanceof Element)) return;
+
+            const editBtn = target.closest('.editBtn');
+            if (editBtn) {
+                const slug = editBtn.getAttribute('data-slug');
+                const article = state.articles.find(a => a.slug === slug);
+                if (article) setFormFromArticle(article);
+                return;
+            }
+
+            const deleteBtn = target.closest('.deleteBtn');
+            if (deleteBtn) {
+                const slug = deleteBtn.getAttribute('data-slug');
+                if (!slug) return;
+
+                const ok = window.confirm('¿Eliminar este artículo? Esta acción no se puede deshacer.');
+                if (!ok) return;
+
+                state.articles = state.articles.filter(a => a.slug !== slug);
+                if (state.selectedSlug === slug) resetForm();
+
+                try {
+                    await saveArticles();
+                    showStatus('Artículo eliminado. Páginas regeneradas.', false);
+                    await load();
+                } catch (err) {
+                    showStatus(err?.message || String(err), true);
+                }
+                return;
+            }
+
+            if (target.classList.contains('published-toggle')) {
+                const slug = target.getAttribute('data-slug');
+                const article = state.articles.find(a => a.slug === slug);
+                if (!article) return;
+                article.published = !!target.checked;
+                updateArticleInState(article);
+                try {
+                    await saveArticles();
+                    showStatus('Publicado actualizado. Páginas regeneradas.', false);
+                    await load();
+                } catch (err) {
+                    showStatus(err?.message || String(err), true);
+                }
+                return;
+            }
+        });
+
+        els.refreshBtn.addEventListener('click', async () => {
+            try {
+                await load();
+                showStatus('Actualizado.', false);
+                clearStatus();
+            } catch (err) {
+                showStatus(err?.message || String(err), true);
+            }
+        });
+
+        function showImagePreview(src) {
+            if (!els.imagePreview) return;
+            els.imagePreview.src = src || '';
+            els.imagePreview.classList.toggle('hidden', !els.imagePreview.src);
+        }
+
+        if (els.imageFile) {
+            els.imageFile.addEventListener('change', async () => {
+                clearStatus();
+                try {
+                    const file = els.imageFile.files && els.imageFile.files[0];
+                    if (!file) return;
+                    if (!String(file.type || '').startsWith('image/')) {
+                        throw new Error('Solo se permiten archivos de imagen.');
+                    }
+
+                    showStatus('Subiendo imagen...', false);
+
+                    const fd = new FormData();
+                    fd.append('image', file);
+
+                    const res = await fetch('/api/upload', {
+                        method: 'POST',
+                        body: fd,
+                        // Ensure same-origin auth headers are sent by the browser.
+                        credentials: 'same-origin',
+                    });
+
+                    if (!res.ok) {
+                        const text = await res.text().catch(() => '');
+                        throw new Error('No se pudo subir la imagen: ' + res.status + (text ? ' - ' + text : ''));
+                    }
+
+                    const data = await res.json();
+                    if (!data.imageSrc) throw new Error('Respuesta inválida del servidor.');
+
+                    els.imageSrc.value = data.imageSrc;
+                    if (!els.imageAlt.value.trim()) {
+                        els.imageAlt.value = file.name.replace(/\.[^/.]+$/, '');
+                    }
+                    showImagePreview(data.imageSrc);
+
+                    showStatus('Imagen cargada.', false);
+                } catch (err) {
+                    showStatus(err?.message || String(err), true);
+                }
+            });
+        }
+
+        els.newBtn.addEventListener('click', () => {
+            resetForm();
+        });
+
+        els.title.addEventListener('input', () => {
+            if (!els.slug.value.trim() || !state.selectedSlug) {
+                els.slug.value = normalizeSlug(els.title.value);
+            }
+        });
+
+        els.saveBtn.addEventListener('click', async () => {
+            clearStatus();
+            try {
+                const article = getFormArticle();
+                if (!article.slug) throw new Error('El slug es obligatorio.');
+                if (!article.title) throw new Error('El título es obligatorio.');
+                if (!article.content) throw new Error('El contenido es obligatorio.');
+                if (!article.imageSrc) throw new Error('imageSrc es obligatorio (ej: images/LogoINDP.png).');
+
+                // Normalize slug and keep form slug in sync.
+                article.slug = normalizeSlug(article.slug);
+                els.slug.value = article.slug;
+
+                updateArticleInState(article);
+                await saveArticles();
+
+                showStatus('Guardado. Páginas regeneradas.', false);
+                await load();
+                setFormFromArticle(article);
+            } catch (err) {
+                showStatus(err?.message || String(err), true);
+            }
+        });
+
+        load().catch((e) => {
+            showStatus(e?.message || String(e), true);
+        });
+    </script>
+</body>
+</html>
+
